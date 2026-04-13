@@ -2,6 +2,8 @@ package com.narxoz.rpg;
 
 import com.narxoz.rpg.combatant.DungeonBoss;
 import com.narxoz.rpg.combatant.Hero;
+import com.narxoz.rpg.engine.DungeonEngine;
+import com.narxoz.rpg.engine.EncounterResult;
 import com.narxoz.rpg.observer.*;
 import com.narxoz.rpg.strategy.AggressiveStrategy;
 import com.narxoz.rpg.strategy.BalancedStrategy;
@@ -53,5 +55,8 @@ public class Main {
         System.out.println("  3. PartySupport");
         System.out.println("  4. HeroStatusMonitor");
         System.out.println("  5. LootDropper");
+
+        DungeonEngine engine = new DungeonEngine(party, boss, publisher);
+        EncounterResult result = engine.run();
     }
 }
