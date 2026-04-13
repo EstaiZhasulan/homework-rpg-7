@@ -2,7 +2,7 @@ package com.narxoz.rpg;
 
 import com.narxoz.rpg.combatant.DungeonBoss;
 import com.narxoz.rpg.combatant.Hero;
-import com.narxoz.rpg.observer.EventPublisher;
+import com.narxoz.rpg.observer.*;
 import com.narxoz.rpg.strategy.AggressiveStrategy;
 import com.narxoz.rpg.strategy.BalancedStrategy;
 import com.narxoz.rpg.strategy.DefensiveStrategy;
@@ -35,10 +35,23 @@ public class Main {
         System.out.printf("  %-14s | HP: %d | ATK: %d | DEF: %d | Strategy: %s%n",
                 boss.getName(), boss.getMaxHp(), boss.getEffectiveDamage(),
                 boss.getEffectiveDefense(), boss.getStrategy().getName());
+        BattleLogger battleLogger      = new BattleLogger();
+        AchievementTracker achievementTracker = new AchievementTracker();
+        PartySupport partySupport      = new PartySupport(party, 25);
+        HeroStatusMonitor heroStatusMonitor = new HeroStatusMonitor(party);
+        LootDropper       lootDropper       = new LootDropper();
 
-        // TODO (student): Create a DungeonBoss with meaningful stats
-        // TODO (student): Instantiate and register all 5 observers
-        // TODO (student): Create a DungeonEngine and run the encounter
-        // TODO (student): Print the EncounterResult at the end
+        publisher.subscribe(battleLogger);
+        publisher.subscribe(achievementTracker);
+        publisher.subscribe(partySupport);
+        publisher.subscribe(heroStatusMonitor);
+        publisher.subscribe(lootDropper);
+
+        System.out.println("\n=== Observers registered ===");
+        System.out.println("  1. BattleLogger");
+        System.out.println("  2. AchievementTracker");
+        System.out.println("  3. PartySupport");
+        System.out.println("  4. HeroStatusMonitor");
+        System.out.println("  5. LootDropper");
     }
 }
