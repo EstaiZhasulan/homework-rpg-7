@@ -1,5 +1,6 @@
 package com.narxoz.rpg;
 
+import com.narxoz.rpg.combatant.DungeonBoss;
 import com.narxoz.rpg.combatant.Hero;
 import com.narxoz.rpg.observer.EventPublisher;
 import com.narxoz.rpg.strategy.AggressiveStrategy;
@@ -27,6 +28,14 @@ public class Main {
                     h.getDefense(), h.getStrategy().getName());
         }
         EventPublisher publisher = new EventPublisher();
+        DungeonBoss boss = new DungeonBoss("Shadow Tyrant", 300, 30, 8, publisher);
+        publisher.subscribe(boss);
+
+        System.out.println("\n=== Boss ===");
+        System.out.printf("  %-14s | HP: %d | ATK: %d | DEF: %d | Strategy: %s%n",
+                boss.getName(), boss.getMaxHp(), boss.getEffectiveDamage(),
+                boss.getEffectiveDefense(), boss.getStrategy().getName());
+
         // TODO (student): Create a DungeonBoss with meaningful stats
         // TODO (student): Instantiate and register all 5 observers
         // TODO (student): Create a DungeonEngine and run the encounter
