@@ -58,5 +58,13 @@ public class Main {
 
         DungeonEngine engine = new DungeonEngine(party, boss, publisher);
         EncounterResult result = engine.run();
+
+        System.out.println("========================================");
+        System.out.println("           ENCOUNTER RESULT             ");
+        System.out.println("========================================");
+        System.out.println("  Outcome        : " + (result.isHeroesWon() ? "HEROES WIN" : "BOSS WINS"));
+        System.out.println("  Rounds played  : " + result.getRoundsPlayed());
+        System.out.println("  Survivors      : " + result.getSurvivingHeroes() + "/" + party.size());
+        System.out.println("========================================");
     }
 }
