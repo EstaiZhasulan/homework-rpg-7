@@ -1,6 +1,7 @@
 package com.narxoz.rpg;
 
 import com.narxoz.rpg.combatant.Hero;
+import com.narxoz.rpg.observer.EventPublisher;
 import com.narxoz.rpg.strategy.AggressiveStrategy;
 import com.narxoz.rpg.strategy.BalancedStrategy;
 import com.narxoz.rpg.strategy.DefensiveStrategy;
@@ -25,6 +26,7 @@ public class Main {
                     h.getName(), h.getMaxHp(), h.getAttackPower(),
                     h.getDefense(), h.getStrategy().getName());
         }
+        EventPublisher publisher = new EventPublisher();
         // TODO (student): Create a DungeonBoss with meaningful stats
         // TODO (student): Instantiate and register all 5 observers
         // TODO (student): Create a DungeonEngine and run the encounter
